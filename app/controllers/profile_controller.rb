@@ -16,7 +16,7 @@ class ProfileController < ApplicationController
   end
 
   private
-    def edit_params
-      params.permit(:first_name, :last_name, :dob, :contact_no, :profile_pic)
-    end
+  def edit_params
+    params.permit(:first_name, :last_name, :dob, :contact_no, :profile_pic)
+  end
 end

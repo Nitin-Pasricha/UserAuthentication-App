@@ -7,6 +7,12 @@ class NotifierMailer < ApplicationMailer
         mail(to: @user.email, subject: "Welcome to CodeSprint")
     end
 
+    def temp_password_notification
+        @user = params[:user]
+        @url = "http://localhost:3000/login"
+        mail(to: @user.email, subject: "CodeSprint: Password reset successful")
+    end
+
     def reset_password_notification
         @user = params[:user]
         @url = "http://localhost:3000/login"

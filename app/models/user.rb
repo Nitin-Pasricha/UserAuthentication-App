@@ -1,10 +1,13 @@
 class User < ApplicationRecord
     attr_accessor :pswd
+
+    # attaching profile_pic with active storage
     has_one_attached :profile_pic
+
+    # validations
     validates :first_name, presence: true
     validates :email, presence: true, uniqueness: true, format: { with: /\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+/ }
     validates :pswd, length: {in: 6..20 },  confirmation: true, on: :create
-    validates :pswd_confirmation, presence: true, on: :create
 
     before_save :encrypt_password
     

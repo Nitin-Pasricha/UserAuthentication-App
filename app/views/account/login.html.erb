@@ -11,32 +11,35 @@
     <div class="forms">
         <div class='form-content'>
             <div class="login-form">
-            <div class='title'>Login</div>
+                <div class='title'>Login</div>
 
-            <%= form_with url:'/login', method: :post do |form| %>
-                <% flash.each do |name, msg| -%>
-                    <%= content_tag :div, msg, class: name, style:'margin-top:1rem' %>
-                <% end -%>
-                <div class="input-boxes">
+                <%= form_with url:'/login', method: :post do |form| %>
+                    <% flash.each do |name, msg| %>
+                        <%= content_tag :div, msg, class: name, style:'margin-top:1rem' %>
+                    <% end %>
+                    <div class="input-boxes">
 
-                    <div class="input-box">
-                        <%= form.email_field :email, placeholder: "Enter your email", :required=>true %>
-                    </div>
-                    
-                    <div class="input-box">
-                        <%= form.password_field :pswd, placeholder: "Enter password", :required=>true %>
-                    </div>
-                    <div class="text"><%= link_to "Forgot password?", forgot_password_path %></div>
-                    
+                        <div class="input-box">
+                            <%= form.email_field :email, placeholder: "Enter your email", :required=>true %>
+                        </div>
+                        
+                        <div class="input-box">
+                            <%= form.password_field :pswd, placeholder: "Enter password", :required=>true %>
+                        </div>
 
-                    <div class="button input-box">
-                        <%= form.submit "Log in"%>
+                        <div class="text">
+                            <%= link_to "Forgot password?", forgot_password_path %>
+                        </div>
+                        
+                        <div class="button input-box">
+                            <%= form.submit "Log in"%>
+                        </div>
+                        
+                        <div class="text sign-up-text">
+                            Don't have an account? <%= link_to "Signup now", signup_path %>
+                        </div>
                     </div>
-                    <div class="text sign-up-text">
-                        Don't have an account? <%= link_to "Signup now", signup_path %>
-                    </div>
-                </div>
-            <% end %>
+                <% end %>
             </div>
         </div>
     </div>

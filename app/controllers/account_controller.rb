@@ -1,4 +1,5 @@
 class AccountController < ApplicationController
+
     def create_account
         @user = User.new
         if request.post?
@@ -41,9 +42,9 @@ class AccountController < ApplicationController
         session.delete(:user)
         redirect_to :login
     end
-
+    
     private
-        def set_params
-            params.permit(:first_name, :last_name, :email, :pswd, :pswd_confirmation, :password, :contact_no, :dob)
-        end
+    def set_params
+        params.permit(:first_name, :last_name, :email, :pswd, :pswd_confirmation, :password, :contact_no, :dob)
+    end
 end

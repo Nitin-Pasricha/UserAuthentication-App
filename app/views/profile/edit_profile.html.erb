@@ -1,61 +1,60 @@
 <div class='container'>
     <div class="cover">
         <div class="front">
-        <% if @user.profile_pic.attached? %>
-        <%= image_tag @user.profile_pic %>
-        <% else %>
-        <%= image_tag("avatar.png") %>
-        <% end %>
+            <% if @user.profile_pic.attached? %>
+                <%= image_tag @user.profile_pic %>
+            <% else %>
+                <%= image_tag("avatar.png") %>
+            <% end %>
         </div>
     </div>
     <div class="forms">
         <div class='form-content'>
-        <div class="signup-form">
-            <div class='title'>
-                Edit Profile
-            </div>
-            <%= form_with url:'/profile/edit_profile', method: :post do |form| %>
-                <div class="input-boxes">
-                    <div style="display:flex">
-                        <div class="input-box" style="padding-right:1rem">
-                            <%= form.text_field :first_name, placeholder: "First name", value: @user.first_name %>
-                        </div>
-                        
-                        <div class="input-box">
-                        <%= form.text_field :last_name, placeholder: "Last name", value: @user.last_name %>
-                        </div>
-                    </div>
-
-                    <div class="input-box">
-                        <%= form.label :dob%>
-                        <%= form.date_field :dob, value: @user.dob %>
-                    </div>
-                    <div class="input-box">
-                        <%= form.label :contact_no%>
-                        <%= form.number_field :contact_no, value: @user.contact_no %>
-                    </div>
-
-                    <div class="input-box" >
-                    <%= form.label :profile_pic %>
-                    <%= form.file_field :profile_pic, style:"border:none; padding-top:1rem" %>
-                    </div>
-                    <div class="text sign-up-text" >
-                    <% if @user.profile_pic.attached? %>
-                        <%= link_to @user.profile_pic.filename, rails_blob_path(@user.profile_pic, disposition: :inline) %>
-                    <% end %>
-                    </div>
-
-                    
-
-                    <div class="button input-box">
-                        <%= form.submit "Save Changes"%>
-                    </div>
-                    <div class="text sign-up-text">
-                    <%= link_to "Back to Dashboard", dashboard_url(@user) %>
-                    </div>
+            <div class="signup-form">
+                <div class='title'>
+                    Edit Profile
                 </div>
-            <% end %>
-            
+                <%= form_with url:'/profile/edit_profile', method: :post do |form| %>
+                    <div class="input-boxes">
+                        <div style="display:flex">
+                            <div class="input-box" style="padding-right:1rem">
+                                <%= form.text_field :first_name, placeholder: "First name", value: @user.first_name %>
+                            </div>
+                            
+                            <div class="input-box">
+                                <%= form.text_field :last_name, placeholder: "Last name", value: @user.last_name %>
+                            </div>
+                        </div>
+
+                        <div class="input-box">
+                            <%= form.label :dob%>
+                            <%= form.date_field :dob, value: @user.dob %>
+                        </div>
+                        <div class="input-box">
+                            <%= form.label :contact_no%>
+                            <%= form.number_field :contact_no, value: @user.contact_no %>
+                        </div>
+
+                        <div class="input-box" >
+                            <%= form.label :profile_pic %>
+                            <%= form.file_field :profile_pic, style:"border:none; padding-top:1rem" %>
+                        </div>
+                        <div class="text sign-up-text" >
+                            <% if @user.profile_pic.attached? %>
+                                <%= link_to @user.profile_pic.filename, rails_blob_path(@user.profile_pic, disposition: :inline) %>
+                            <% end %>
+                        </div>
+
+                        <div class="button input-box">
+                            <%= form.submit "Save Changes"%>
+                        </div>
+
+                        <div class="text sign-up-text">
+                            <%= link_to "Back to Dashboard", dashboard_url(@user) %>
+                        </div>
+                    </div>
+                <% end %>
+                
             </div>
         </div>
     </div>
