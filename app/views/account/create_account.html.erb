@@ -1,0 +1,60 @@
+<div class='container'>
+    <div class="cover">
+        <div class="front">
+            <%= image_tag("b1.svg", alt:"Welcome") %>
+        </div>
+    </div>
+    <div class="forms">
+        <div class='form-content'>
+            <div class="signup-form">
+            <div class='title'>Signup</div>
+
+            <%= form_with url:'/signup', method: :post do |form| %>
+                <div class="input-boxes">
+                <div style="display:flex">
+                    <div class="input-box" style="padding-right:1rem">
+                        <%= form.text_field :first_name, placeholder: "First name" %>
+                    </div>
+                    
+                    <div class="input-box">
+                    <%= form.text_field :last_name, placeholder: "Last name" %>
+                    </div>
+                    </div>
+                    <% @user.errors.full_messages_for(:first_name).each do |message| %>
+                        <div class='error'><%= message %></div>
+                        <% break %>
+                    <% end %>
+
+                    <div class="input-box">
+                        <%= form.email_field :email, placeholder: "Enter your email" %>
+                    </div>
+                    <% @user.errors.full_messages_for(:email).each do |message| %>
+                        <div class='error'><%= message %></div>
+                        <% break %>
+                    <% end %>
+                    <div class="input-box">
+                        <%= form.password_field :pswd, placeholder: "Enter password" %>
+                    </div>
+                    <% @user.errors.full_messages_for(:pswd).each do |message| %>
+                        <div class='error'><%= message %></div>
+                        <% break %>
+                    <% end %>
+
+                    <div class="input-box">
+                        <%= form.password_field :pswd_confirmation, placeholder: "Confirm password" %>
+                    </div>
+                    <% @user.errors.full_messages_for(:pswd_confirmation).each do |message| %>
+                        <div class='error'>Password doesn't match.</div>
+                    <% end %>
+                    <div class="button input-box">
+                        <%= form.submit "Create Account"%>
+                    </div>
+                    <div class="text sign-up-text">Already have an account?
+                    <%= link_to "Login now", login_path %>
+                    </div>
+                </div>
+            <% end %>
+            </div>
+        </div>
+    </div>
+</div>

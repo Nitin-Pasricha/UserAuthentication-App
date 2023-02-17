@@ -1,0 +1,43 @@
+<div class='container'>
+    <div class="cover">
+        <div class="front">
+            <%= image_tag("frontImg.jpg", alt:"Welcome", style:"object-fit:cover")  %>
+            <div class="text">
+                <span class="text-1">Every new friend is a <br> new adventure</span>
+                <span class="text-2">Let's get connected</span>
+            </div>
+        </div>
+    </div>
+    <div class="forms">
+        <div class='form-content'>
+            <div class="login-form">
+            <div class='title'>Login</div>
+
+            <%= form_with url:'/login', method: :post do |form| %>
+                <% flash.each do |name, msg| -%>
+                    <%= content_tag :div, msg, class: name, style:'margin-top:1rem' %>
+                <% end -%>
+                <div class="input-boxes">
+
+                    <div class="input-box">
+                        <%= form.email_field :email, placeholder: "Enter your email", :required=>true %>
+                    </div>
+                    
+                    <div class="input-box">
+                        <%= form.password_field :pswd, placeholder: "Enter password", :required=>true %>
+                    </div>
+                    <div class="text"><%= link_to "Forgot password?", forgot_password_path %></div>
+                    
+
+                    <div class="button input-box">
+                        <%= form.submit "Log in"%>
+                    </div>
+                    <div class="text sign-up-text">
+                        Don't have an account? <%= link_to "Signup now", signup_path %>
+                    </div>
+                </div>
+            <% end %>
+            </div>
+        </div>
+    </div>
+</div>
